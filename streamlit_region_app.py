@@ -91,7 +91,7 @@ if clicked:
         ax.plot(x, ylistmeta[i], label=labellist[i])
         for m, txt in enumerate(ylistmeta[i]):
         # Format the number to two decimal places
-            formatted_txt = "{:.4f}".format(txt)
+            formatted_txt = "{:.2f}".format(txt)
             ax.annotate(formatted_txt, (x[m], ylistmeta[i][m]), textcoords="offset points", xytext=(0,4), ha='center')
 
     # Set x-axis to display only integers
@@ -101,7 +101,7 @@ if clicked:
     # Add grid to the plot
     ax.grid(True)
 
-    ax.set_title('Benchmarking of countries in Europe based on the metric: ' + selected_metrics)
+    ax.set_title('Benchmarking of regions in ' + selected_country + ' based on the metric: ' + selected_metrics)
 
     ax.set_xlabel('Year')
     ax.set_ylabel(selected_metrics+ ' %')
