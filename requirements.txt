@@ -1,0 +1,12 @@
+ipykernel==6.23.1
+ipython==8.13.2
+markdown-it-py==2.2.0
+openai==0.27.7
+openapi-schema-pydantic==1.2.4
+streamlit==1.22.0
+tiktoken== 0.4.0
+faiss-cpu==1.7.4
+pandas==2.0.3
+matplotlib==3.7.2
+numpy== 1.25.1
+openpyxl == 3.1.2
