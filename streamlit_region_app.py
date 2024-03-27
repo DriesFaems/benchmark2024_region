@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Load data
 
-df = pd.read_excel('Aggregate region with country with cleaned regions.xlsx')
+df = pd.read_excel('Aggregate region with cleaned regions.xlsx')
 
 country = pd.read_excel('Aggregate country with country.xlsx')
 
