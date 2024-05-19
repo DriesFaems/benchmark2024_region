@@ -13,7 +13,7 @@ country = pd.read_excel('Aggregate country with country.xlsx')
 df_long = df[df['Country'].notna()].reset_index(drop=True)
 
 # Streamlit app
-st.title('European Scaleup Monitor: Bechmarking of regions in Europe')
+st.title('European Scaleup Monitor: Benchmarking of regions in Europe')
 
 # add subheader
 
@@ -26,20 +26,28 @@ metrics = ['Scaler (companies with average annual growth rate of 10% in past thr
 selected = st.selectbox('Select metrics', metrics)
 if selected == 'Scaler (companies with average annual growth rate of 10% in past three years)':
     selected_metrics = 'Scaler'
+    user_metrics = 'Scaler'
 if selected == 'HighGrowthFirm (companies with average annual growth rate of 20% in past three years)':
     selected_metrics = 'HighGrowthFirm'
+    user_metrics = 'High Growth Firm'
 if selected == 'Consistent HighGrowthFirm (high growth companies that grew 20% in at least 2 of the past three years)':
     selected_metrics = 'ConsistentHighGrowthFirm'
+    user_metrics = 'Consistent High Growth Firm'
 if selected == 'Consistent Hypergrower (high growth companies that grew 40% in at least 2 of the past three years)':
     selected_metrics = 'VeryHighGrowthFirm'
+    user_metrics = 'Consistent Hypergrower'
 if selected == 'Gazelle (consistent high growth firm that is younger than 10 years)':
     selected_metrics = 'Gazelle'
+    user_metrics = 'Gazelle'
 if selected == 'Mature HighGrowthFirm (consistent high growth firm that is older than 10 years)':
     selected_metrics = 'Mature'
+    user_metrics = 'Mature High Growth Firm'
 if selected == 'Scaleup (consistent hypergrower that is younger than 10 years)':
     selected_metrics = 'Scaleup'
+    user_metrics = 'Scaleup'
 if selected == 'Superstar (consistent hypergrower that is older than 10 years)':
     selected_metrics = 'Superstar'
+    user_metrics = 'Superstar'
 
 
 # Country selection
@@ -101,10 +109,10 @@ if clicked:
     # Add grid to the plot
     ax.grid(True)
 
-    ax.set_title('Benchmarking of regions in ' + selected_country + ' based on the metric: ' + selected_metrics)
+    ax.set_title('Benchmarking of regions in ' + selected_country + ' based on the metric: ' + user_metrics)
 
     ax.set_xlabel('Year')
-    ax.set_ylabel(selected_metrics+ ' %')
+    ax.set_ylabel(user_metrics+ ' %')
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15))
     st.pyplot(fig)
 
@@ -117,20 +125,20 @@ if clicked:
     # change column names
 
     newtable.columns = newtable.columns.to_series().replace(selected_metrics + ' 2022 Obs', 'Total number of observed companies in 2022') \
-    .replace(selected_metrics + ' 2022 Num', 'Number of ' + selected_metrics + 's in 2022') \
-    .replace(selected_metrics + ' 2022 %', 'Percentage of ' + selected_metrics + 's in 2022') \
+    .replace(selected_metrics + ' 2022 Num', 'Number of ' + user_metrics + 's in 2022') \
+    .replace(selected_metrics + ' 2022 %', 'Percentage of ' + user_metrics + 's in 2022') \
     .replace(selected_metrics + ' 2021 Obs', 'Total number of observed companies in 2021') \
-    .replace(selected_metrics + ' 2021 Num', 'Number of ' + selected_metrics + 's in 2021') \
-    .replace(selected_metrics + ' 2021 %', 'Percentage of ' + selected_metrics + 's in 2021') \
+    .replace(selected_metrics + ' 2021 Num', 'Number of ' + user_metrics + 's in 2021') \
+    .replace(selected_metrics + ' 2021 %', 'Percentage of ' + user_metrics + 's in 2021') \
     .replace(selected_metrics + ' 2020 Obs', 'Total number of observed companies in 2020') \
-    .replace(selected_metrics + ' 2020 Num', 'Number of ' + selected_metrics + 's in 2020') \
-    .replace(selected_metrics + ' 2020 %', 'Percentage of ' + selected_metrics + 's in 2020') \
+    .replace(selected_metrics + ' 2020 Num', 'Number of ' + user_metrics + 's in 2020') \
+    .replace(selected_metrics + ' 2020 %', 'Percentage of ' + user_metrics + 's in 2020') \
     .replace(selected_metrics + ' 2019 Obs', 'Total number of observed companies in 2019') \
-    .replace(selected_metrics + ' 2019 Num', 'Number of ' + selected_metrics + 's in 2019') \
-    .replace(selected_metrics + ' 2019 %', 'Percentage of ' + selected_metrics + 's in 2019') \
+    .replace(selected_metrics + ' 2019 Num', 'Number of ' + user_metrics + 's in 2019') \
+    .replace(selected_metrics + ' 2019 %', 'Percentage of ' + user_metrics + 's in 2019') \
     .replace(selected_metrics + ' 2018 Obs', 'Total number of observed companies in 2018') \
-    .replace(selected_metrics + ' 2018 Num', 'Number of ' + selected_metrics + 's in 2018') \
-    .replace(selected_metrics + ' 2018 %', 'Percentage of ' + selected_metrics + 's in 2018')
+    .replace(selected_metrics + ' 2018 Num', 'Number of ' + user_metrics + 's in 2018') \
+    .replace(selected_metrics + ' 2018 %', 'Percentage of ' + user_metrics + 's in 2018')
 
     # set index to country
 
